@@ -298,6 +298,8 @@ DEBUG_HOST = localhost
 # Define programs and commands.
 SHELL = sh
 CC = avr-gcc
+#CC = avr-gcc -E
+#CC = avr-gcc -E -dM
 OBJCOPY = avr-objcopy
 OBJDUMP = avr-objdump
 SIZE = avr-size
@@ -422,7 +424,7 @@ dfu: $(TARGET).hex
 	dfu-programmer $(MCU) erase
 	dfu-programmer $(MCU) flash $(TARGET).hex
 	dfu-programmer $(MCU) reset
-	
+
 dfu-start:
 	dfu-programmer $(MCU) reset
 	dfu-programmer $(MCU) start
